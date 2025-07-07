@@ -44,7 +44,7 @@ Ambos módulos se comunican a través de una base de datos SQLite compartida, lo
 ## ✨ Características Principales
 
 - **D Inteligente:** Asigna automáticamente un espacio libre a los vehículos autorizados al momento de su ingreso.
-- **Comunicación por Base de Datos:** Los dos módulos están desacoplados y se comunican de forma asíncrona a través deetección Dual:** Utiliza modelos YOLOv8 separados para la detección de vehículos/placas y para los espacios de estacionamiento una base de datos `SQLite`, lo que garantiza un sistema robusto y escalable.
+- **Comunicación por Base de Datos:** Los dos módulos están desacoplados y se comunican de forma asíncrona a través deetección Dual:** Utiliza modelos YOLOv11 separados para la detección de vehículos/placas y para los espacios de estacionamiento una base de datos `SQLite`, lo que garantiza un sistema robusto y escalable.
 
 ## 🏛️ Arquitectura del.
 - **OCR Integrado:** Emplea PaddleOCR para una lectura precisa de patentes.
@@ -53,9 +53,9 @@ Ambos módulos se comunican a través de una base de datos SQLite compartida, lo
 El proyecto está diseñado de forma modular para separar responsabilidades y facilitar el mantenimiento.
 
 1.  **Pestaña de Control de Acceso (`AccessControlTab`)**:
-    - **Modelos Utilizados:** `YOLOv8`Asignación Automática:** Asigna inteligentemente el primer espacio libre a los vehículos autorizados.
+    - **Modelos Utilizados:** `YOLOv11`Asignación Automática:** Asigna inteligentemente el primer espacio libre a los vehículos autorizados.
 - **Base de Datos Centralizada:** Usa SQLite para gestionar usuarios y el estado en tiempo real de cada espacio.
-- **Interfaz para detección de vehículos y `YOLOv8` para detección de placas.
+- **Interfaz para detección de vehículos y `YOLOv11` para detección de placas.
     - **OCR:** `PaddleOCR` para leer el texto de las patentes.
     - **Flujo de Trabajo:**
         1.  Un vehículo entra Gráfica Intuitiva:** Desarrollada con PyQt5, presenta la información de forma clara y organizada en pestañas.
@@ -78,7 +78,7 @@ Para ejecutar este proyecto, necesitas tener Python 3.10 o superior.5.  Se verif
 
 ```bash
 git clone https://github.com/tu_usuario/tu_repositorio. del Estacionamiento (`ParkingStatusTab`)**:
-    - **Modelo Utilizado:** `YOLOv8` entrengit
+    - **Modelo Utilizado:** `YOLOv11` entrengit
 cd tu_repositorio
 ```
 
@@ -117,7 +117,7 @@ El archivo `requirements.txt` contiene las siguientes librerías  Muestra una vi
 
 3.  **Base de Datos Central (`estacionamiento.db`)**:
     - Actúa como el y video.
-- `ultralytics`: Para el modelo de detección de objetos YOLOv8.
+- `ultralytics`: Para el modelo de detección de objetos YOLOv11.
 - `paddleocr "cerebro" y la memoria del sistema.
     - Contiene dos tablas principales: `usuarios` y ``: Para el Reconocimiento Óptico de Caracteres.
 - `paddlepaddle`: Dependencia principal deestacionamientos`.
