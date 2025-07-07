@@ -1,0 +1,16 @@
+# --- OCR con GPU ---
+paddlepaddle-gpu==2.6.1 ; platform_system != 'Darwin'  # GPU (Linux/Windows), omitir en MacOS
+
+# --- OCR principal ---
+paddleocr==2.6.1.3
+
+# --- Procesamiento de imágenes y video ---
+opencv-python
+
+# --- Interfaz gráfica ---
+PyQt5
+
+# --- Detección con YOLOv11 ---
+ultralytics
+
+numpy
