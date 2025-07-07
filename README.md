@@ -30,7 +30,7 @@ Este proyecto es una solución completa y profesional para la gestión automatiz
 
 2.  **📊 Módulo de Monitore  - Reconoce el **tipo de vehículo** (Auto, Camioneta, etc.) que se aproxima.
   o de Estacionamiento:**
-    *   Utiliza una segunda cámara (o una imagen estática) para monit- Detecta y lee la **patente del vehículo** mediante OCR (Reconocimiento Óptico de Caracterorear los espacios de estacionamiento.
+    *   Utiliza una segunda cámara (o una imagen estática) para monitoreo de estacionamientos- Detecta y lee la **patente del vehículo** mediante OCR (Reconocimiento Óptico de Caracterorear los espacios de estacionamiento).
     *   Detecta si cada espacio está `Libre` u `Ocupadoes).
 - **Verificación de Usuarios:** Compara la patente detectada con una base de datos de usuarios autorizados (`Est`.
     *   Actualiza el estado de cada espacio en una base de datos central.
