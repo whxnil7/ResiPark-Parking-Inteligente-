@@ -14,7 +14,7 @@ Este proyecto es una solución completa y profesional para la gestión automatiz
 
     *   Utiliza una cámara para vigilar la entrada de un estacionamiento.
     *   Detecta vehículos que ingresan a una "zona de detección" configurable.
-    *   Identifica el tipo de vehículo (ej. <!-- Reemplaza esto con una captura de tu app -->
+    *   Identifica el tipo de vehículo
 
 ## 🌟 Características Principales
 
