@@ -1,72 +1,95 @@
+# 🚗 Sistema Integrado de Gestión de Estacionamiento en Tiempo Real
 
-# Sistema Integrado de Gestión de Estacionamiento con tiempo real.
-
-<img src="Logo-ResiPark.png" alt="resipark" />
+<img src="Logo-ResiPark.png" alt="ResiPark Logo" width="200"/>
 
 ## 📜 Descripción
 
-El sistema se compone de dos módulos Visión por Computadora
+ResiPark es una solución profesional para la gestión automatizada de estacionamientos que combina visión por computadora con una interfaz unificada. El sistema consta de dos módulos principales integrados en una sola aplicación:
 
-Este proyecto es una solución completa y profesional para la gestión automatizada de un estacionamiento, utilizando técnicas avanzadas de visión por computadora. El sistema está dividido en dos módulos principales que operan de forma coordinada a principales integrados en una sola interfaz con pestañas:
+1. **🛂 Módulo de Control de Acceso**
+   - Monitorea en tiempo real la entrada de vehículos
+   - Detecta automáticamente el tipo de vehículo (Auto, Camioneta)
+   - Localiza y recorta la placa del vehículo
+   - Implementa OCR para lectura de patentes
+   - Verifica autorización en base de datos (Estudiante/Profesor)
+   - Asigna espacios disponibles automáticamente
 
-1.  **🛂 Módulo de Control de Acceso:**
- través de una base de datos central.
+2. **📊 Módulo de Monitoreo de Estacionamiento**
+   - Analiza la ocupación de espacios mediante visión por computadora
+   - Clasifica cada espacio como Libre/Ocupado/Reservado
+   - Visualiza el estado con código de colores intuitivo
+   - Proporciona métricas de ocupación en tiempo real
 
-    *   Utiliza una cámara para vigilar la entrada de un estacionamiento.
-    *   Detecta vehículos que ingresan a una "zona de detección" configurable.
-    *   Identifica el tipo de vehículo
+Ambos módulos se comunican mediante una base de datos SQLite centralizada, permitiendo un sistema robusto y desacoplado.
 
-## 🌟 Características Principales
+## 🌟 Características Clave
 
-- **Interfaz Gráfica Intuitiva:** Una única ventana con dos pestañas para una gestión centralizada:
-  - **Control de Acceso:** Monitorea en tiempo real la entrada de vehículos.
-  - **Estado del Estacionamiento:** Pro Auto, Camioneta).
-    *   Localiza y recorta la placa del vehículo.
-    *   Aplica OCR para leer los caracteres de la patente.
-    *   Verifica si la patente pertenece a un usuario autorizadoporciona una vista general del estado de todos los espacios.
-- **Detección Dual en la Entrada:**
- (`Estudiante` o `Profesor`) en una base de datos.
-    *   Si el usuario está autorizado y hay espacio, asigna automáticamente un lugar de estacionamiento libre.
+### 🖥️ Interfaz Unificada
+- Panel con pestañas para gestión centralizada
+- Vista intuitiva del estado del estacionamiento
+- Diseño responsive con PyQt5
 
-2.  **📊 Módulo de Monitore  - Reconoce el **tipo de vehículo** (Auto, Camioneta, etc.) que se aproxima.
-  o de Estacionamiento:**
-    *   Utiliza una segunda cámara (o una imagen estática) para monitoreo de estacionamientos- Detecta y lee la **patente del vehículo** mediante OCR (Reconocimiento Óptico de Caracterorear los espacios de estacionamiento).
-    *   Detecta si cada espacio está `Libre` u `Ocupadoes).
-- **Verificación de Usuarios:** Compara la patente detectada con una base de datos de usuarios autorizados (`Est`.
-    *   Actualiza el estado de cada espacio en una base de datos central.
-    *   Visualudiante`, `Profesor`).
-- **Monitoreo de Espacios:** Analiza una imagen o video del estacionamiento paraiza el estado de cada espacio con un sistema de colores intuitivo.
-    *   Proporciona un resumen en determinar el estado de cada espacio (`Libre`, `Ocupado`, `Reservado`).
-- **Asignación tiempo real de la ocupación total.
+### 🔍 Tecnologías Avanzadas
+- **Detección Dual YOLOv11**: Modelos separados para vehículos/placas y espacios
+- **OCR de Alta Precisión**: Implementación de PaddleOCR para lectura de patentes
+- **Zonas Configurables**: Área de detección personalizable
 
-Ambos módulos se comunican a través de una base de datos SQLite compartida, lo que permite un sistema desacoplado y robusto.
+### ⚙️ Funcionalidades Inteligentes
+- Asignación automática de espacios
+- Verificación instantánea de usuarios autorizados
+- Actualización en tiempo real del estado de ocupación
+- Optimización de recursos (OCR solo en zona de detección)
 
-## ✨ Características Principales
+### 🗃️ Gestión de Datos
+- Base de datos SQLite centralizada
+- Sistema de señales y slots para comunicación entre módulos
+- Registro histórico de accesos
 
-- **D Inteligente:** Asigna automáticamente un espacio libre a los vehículos autorizados al momento de su ingreso.
-- **Comunicación por Base de Datos:** Los dos módulos están desacoplados y se comunican de forma asíncrona a través deetección Dual:** Utiliza modelos YOLOv11 separados para la detección de vehículos/placas y para los espacios de estacionamiento una base de datos `SQLite`, lo que garantiza un sistema robusto y escalable.
+## 🏛️ Arquitectura del Sistema
 
-## 🏛️ Arquitectura del.
-- **OCR Integrado:** Emplea PaddleOCR para una lectura precisa de patentes.
-- ** Sistema
+```mermaid
+graph TD
+    A[Interfaz Principal] --> B[Control de Acceso]
+    A --> C[Monitoreo]
+    B --> D[Base de Datos SQLite]
+    C --> D
+    B --> E[YOLOv11 - Detección Vehículos/Placas]
+    C --> F[YOLOv11 - Detección Espacios]
+    B --> G[PaddleOCR]
+```
 
-El proyecto está diseñado de forma modular para separar responsabilidades y facilitar el mantenimiento.
+1. **Pestaña de Control de Acceso**
+   - Flujo de trabajo:
+     1. Detección de vehículo en zona configurada
+     2. Clasificación del tipo de vehículo
+     3. Extracción y lectura de patente
+     4. Verificación en base de datos
+     5. Asignación de espacio disponible
 
-1.  **Pestaña de Control de Acceso (`AccessControlTab`)**:
-    - **Modelos Utilizados:** `YOLOv11`Asignación Automática:** Asigna inteligentemente el primer espacio libre a los vehículos autorizados.
-- **Base de Datos Centralizada:** Usa SQLite para gestionar usuarios y el estado en tiempo real de cada espacio.
-- **Interfaz para detección de vehículos y `YOLOv11` para detección de placas.
-    - **OCR:** `PaddleOCR` para leer el texto de las patentes.
-    - **Flujo de Trabajo:**
-        1.  Un vehículo entra Gráfica Intuitiva:** Desarrollada con PyQt5, presenta la información de forma clara y organizada en pestañas.
- en la "zona de detección".
-        2.  El sistema identifica el tipo de vehículo.
-        3.  Se busca- **Comunicación entre Módulos:** La asignación en el módulo de acceso actualiza instantáneamente la vista del módulo de monitoreo gracias a un sistema de señales y slots de PyQt.
-- **Optimización de Rendimiento:** La detección de patentes solo se activa cuando un vehículo entra en una zona específica, ahorrando recursos computacionales.
+2. **Pestaña de Monitoreo**
+   - Procesamiento de imagen/video del estacionamiento
+   - Detección del estado de cada espacio
+   - Actualización visual y en base de datos
+   - Cálculo de métricas de ocupación
 
-## 🚀 Posibles Mejoras Futuras
+## 🚀 Roadmap y Mejoras Futuras
 
--   Implementar el monitoreo del estacionamiento con video en tiempo real en lugar de imágenes estáticas.
--   Añadir una función para registrar la salida de vehículos y liberar automáticamente sus espacios.
--   Crear un sistema de reportes para analizar la ocupación a lo largo del tiempo.
--   Integrar un sistema de pagos o tarifasissue" para discutirlo o envía un "pull request".
+- [ ] Implementar video en tiempo real para monitoreo
+- [ ] Sistema automatizado para registro de salidas
+- [ ] Módulo de reportes y análisis histórico
+- [ ] Integración con sistema de barreras / portones
+- [ ] Versión multi-cámara para grandes estacionamientos
+
+## 💻 Requisitos Técnicos
+
+- Python 3.8+
+- PyQt5
+- OpenCV
+- PaddleOCR
+- YOLOv11
+- SQLite3
+
+## 📄 Licencia
+
+Este proyecto está bajo licencia MIT. 
+
